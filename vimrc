@@ -91,9 +91,6 @@ syntax enable                                    " enable syntax highlight
 " syntax on                                      " Vim will overrule your settings
 
 set t_Co=256                                     " number of colors
-" colorscheme zenburn
-colorscheme desert
-set background=dark
 
 " set guifont=Apple\ Color\ Emoji:h12
 set guifont=Inconsolata:h12                      " font style and size
@@ -154,7 +151,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scooloose/nerdtree'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'nvie/vim-flake8'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
@@ -170,9 +166,19 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'MattesGroeger/vim-bookmarks'
+Plugin 'jpalardy/vim-slime'
+Plugin 'morhetz/gruvbox'
 Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 call vundle#end()
+
+" ----------------------------------------- "
+" Color Schemes
+" ----------------------------------------- "
+
+colorscheme gruvbox
+set background=dark
 
 " ----------------------------------------- "
 " Plugin configs 			    			"
@@ -255,6 +261,30 @@ autocmd BufWritePre * if index(blacklist, &ft) < 0 | StripWhitespace
 let g:airline_powerline_fonts=1
 let g:airline_extensions=[]
 let g:airline_theme='solarized'
+
+" ==================== vim-bookmarks  ====================
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_sign = '♥'
+let g:bookmark_highlight_lines = 1
+let g:bookmark_save_per_working_dir = 0
+let g:bookmark_auto_save = 0
+
+" ==================== vim-easymotion ====================
+nmap ss <Plug>(easymotion-s2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+let g:EasyMotion_smartcase = 1
+
+" ==================== vim-slime ====================
+let g:slime_target = 'vimterminal'
+let g:slime_python_ipython = 1
 
 " ==================== Powerline ====================
 " python3 from powerline.vim import setup as powerline_setup
